@@ -1,0 +1,21 @@
+<html>
+<body>
+	{% if category %}
+		<h2>Category: {{ category }}</h2>
+	{% endif %}
+
+	{% if products %}
+		<ul>
+		{% for product in products %}
+			<li>
+				<a href="{% url 'p_details' product.id %}">{{ product.pname }}</a>
+				- {{ product.price }}
+			</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No products found.</p>
+	{% endif %}
+
+</body>
+</html>

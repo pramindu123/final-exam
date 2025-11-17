@@ -1,0 +1,28 @@
+ <a class="btn btn-lg btn-primary" href="{% url 'home' %}">Homepage</a>
+<h1>Reviews</h1>
+
+<form method ="POST" action="{% url 'reviews' %}"> 
+    {% csrf_token %}
+    <input type="text" name="username"  placeholder="Enter Username"/> <br>
+    <textarea name="comment" placeholder="Enter Comment" rows="5" cols="40"></textarea> 
+    <button type="submit" class="btn btn-secondary"> Submit Review </button> 
+</form> 
+
+<h3>All Comments</h3>
+
+ {% if comments %} <!--Checks if the comments variable exists and is not empty. -->
+    <ul>
+        {% for item in comments %}
+            <li>
+                <strong>{{ item.username }}</strong>: {{ item.comment }} 
+                <form method="post" action="{% url 'delete_post' item.id %}" style="display:inline;">
+                    {% csrf_token %}
+                <button type="submit">Delete</button>
+</form>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No comments yet.</p>
+{% endif %}

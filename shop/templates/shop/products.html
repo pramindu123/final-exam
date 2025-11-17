@@ -1,0 +1,24 @@
+<a class="btn btn-lg btn-primary" href="{% url 'home' %}">Homepage</a>
+<h1>Products</h1>
+
+
+<a href="{% url 'by_category' 'Van' %}">
+    Van
+</a>
+<br>
+
+<a href="{% url 'by_category' 'Car' %}">
+    Car
+</a>
+
+{% for product in products %}
+	<div class="product-item">
+		<h3>{{ product.pname }}</h3>
+		<p>{{ product.description }}</p>
+		<p>Category: {{ product.category }}</p>
+		<p>Price: {{ product.price }}</p>
+		<a class="btn btn-outline-dark mt-auto" href="{% url 'p_details' product.id %}">View Product</a>
+	</div>
+{% empty %}
+	<p>No products available.</p>
+{% endfor %}

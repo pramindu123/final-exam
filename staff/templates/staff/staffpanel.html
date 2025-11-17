@@ -1,0 +1,13 @@
+<h1> Staff Dashboard </h1>
+
+<h1>All Products</h1> 
+<a class="btn btn-outline-dark mt-auto" href="{% url 'show_products'%}">View Products</a>
+{% for product in products %}
+	<div class="product-item">
+		<h3>{{ product.pname }}</h3>
+		<p>{{ product.description }}</p>
+		<p>Category: {{ product.category }}</p>
+		<p>Price: {{ product.price }}</p>
+        <a class="btn btn-outline-dark mt-auto" href="{% url 'increase_price' product.id%}">Increase Price</a>
+	</div>
+{% endfor %}
