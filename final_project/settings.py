@@ -91,6 +91,11 @@ if DATABASE_URL:
             ssl_require=True
         )
     }
+    # Fix for Render IPv6 connectivity issues with Supabase
+    DATABASES['default']['OPTIONS'] = {
+        'connect_timeout': 10,
+        'options': '-c statement_timeout=30000',
+    }
 else:
     # Fallback to SQLite for local development
     DATABASES = {
