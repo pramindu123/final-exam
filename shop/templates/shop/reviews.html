@@ -17,7 +17,7 @@
                 <strong>{{ item.username }}</strong>: {{ item.comment }} 
                 <form method="post" action="{% url 'delete_post' item.id %}" style="display:inline;">
                     {% csrf_token %}
-                <button type="submit">Delete Button</button>
+                <button type="submit">Delete</button>
 </form>
 
             </li>
